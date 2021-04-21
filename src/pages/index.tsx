@@ -170,7 +170,7 @@ export default function Home({latesEpisodes, allEpisodes}: HomeProps) {
                   </td>
                   <td>{episode.members}</td>
                   <td style={{width: 100}}>{episode.publishedAt}</td>
-                  <td>{episode.duration}</td>
+                  <td>{episode.durationAsString}</td>
                   <td>
                     <button type="button">
                       <img src="/play-green.svg" alt="Tocar episódio"/>
