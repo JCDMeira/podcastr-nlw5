@@ -78,12 +78,15 @@
       _ torna mais performático. Todos acessando o mesmo HTML estático gerado.  
 */
 
+import { useContext } from 'react';
 import { GetStaticProps } from 'next';
+import { PlayerContext } from '../contexts/PlayerContext';
 import Link from 'next/link';
 import Image from 'next/image';
 import { format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { api } from '../services/api';
+
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString';
 
 import styles from './home.module.scss';
@@ -105,7 +108,9 @@ type HomeProps = {
 }
 
 export default function Home({ latesEpisodes, allEpisodes }: HomeProps) {
-  console.log(latesEpisodes);
+  
+  const {play} = useContext(PlayerContext)
+  
   return (
     <div className={styles.homePage}>
       <section className={styles.latesEpisodes}>
@@ -132,7 +137,7 @@ export default function Home({ latesEpisodes, allEpisodes }: HomeProps) {
                   <span>{episode.durationAsString}</span>
                 </div>
 
-                <button type="button">
+                <button type="button" onClick={() => play(episode)}>
                   <img src="/play-green.svg" alt="Tocar episódio" />
                 </button>
               </li>
