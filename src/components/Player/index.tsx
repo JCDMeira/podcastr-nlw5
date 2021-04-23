@@ -5,6 +5,8 @@ import Slider from 'rc-slider';
 
 import 'rc-slider/assets/index.css';
 import styles from './styles.module.scss';
+import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
+import Episode from '../../pages/episodes/[slug]';
 
 export function Player() {
 
@@ -14,14 +16,16 @@ export function Player() {
         episodeList,
         currentEpisodeIndex,
         isPlaying,
+        isLooping,
+        isShuffling,
         togglePlay,
+        toggleLoop,
+        toggleShuffle,
         setPlayingState,
         playNext,
         playPrevious,
         hasNext,
         hasPrevious,
-        isLooping,
-        toggleLoop,
     } = usePlayer();
 
     useEffect(() => {
@@ -75,7 +79,7 @@ export function Player() {
                             <div className={styles.emptySlider} />
                         )}
                     </div>
-                    <span>00:00</span>
+                    <span>{convertDurationToTimeString(episode?.duration ?? 0)}</span>
                 </div>
 
                 {episode && (
@@ -90,10 +94,19 @@ export function Player() {
                 )}
 
                 <div className={styles.buttons}>
-                    <button type="button" disabled={!episode}>
+                    <button
+                        type="button"
+                        disabled={!episode || episodeList.length === 1}
+                        onClick={toggleShuffle}
+                        className={isShuffling ? styles.isActive : ''}
+                    >
                         <img src="/shuffle.svg" alt="Embaralhas" />
                     </button>
-                    <button type="button" onClick={playPrevious} disabled={!episode || !hasPrevious}>
+                    <button
+                        type="button"
+                        onClick={playPrevious}
+                        disabled={!episode || (!hasPrevious && !isShuffling)}
+                    >
                         <img src="/play-previous.svg" alt="Tocar anterior" />
                     </button>
                     <button
@@ -108,7 +121,11 @@ export function Player() {
                             : <img src="/play.svg" alt="Tocar" />}
 
                     </button>
-                    <button type="button" onClick={playNext} disabled={!episode || !hasNext}>
+                    <button 
+                    type="button" 
+                    onClick={playNext} 
+                    disabled={!episode ||( !hasNext && !isShuffling)}
+                    >
                         <img src="/play-next.svg" alt="Tocar próxima" />
                     </button>
                     <button
