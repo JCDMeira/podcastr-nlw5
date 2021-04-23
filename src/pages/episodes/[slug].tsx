@@ -9,6 +9,8 @@ import Link from 'next/link';
 
 import styles from './episode.module.scss';
 import { usePlayer } from '../../contexts/PlayerContext';
+import React from 'react';
+import Head from 'next/head';
 
 type Episode = {
     id: string;
@@ -26,26 +28,31 @@ type EpisodeProps = {
     episode: Episode;
 }
 
-export default function Episode({ episode } : EpisodeProps) {
+export default function Episode({ episode }: EpisodeProps) {
 
-    const {play} = usePlayer();
+    const { play } = usePlayer();
 
     return (
         <div className={styles.episode}>
+
+            <Head>
+                <title>{episode.title} | Podcastr</title>
+            </Head>
+
             <div className={styles.thumbnailContainer}>
                 <Link href='/'>
                     <button type='button'>
-                        <img src="/arrow-left.svg" alt="voltar"/>
+                        <img src="/arrow-left.svg" alt="voltar" />
                     </button>
                 </Link>
-                <Image 
-                    width={700} 
-                    height={160} 
-                    src={episode.thumbnail} 
+                <Image
+                    width={700}
+                    height={160}
+                    src={episode.thumbnail}
                     objectFit="cover"
                 />
-                <button type="button" onClick={()=>play(episode)}>
-                <img src="/play.svg" alt="Tocar episódio"/>
+                <button type="button" onClick={() => play(episode)}>
+                    <img src="/play.svg" alt="Tocar episódio" />
                 </button>
             </div>
 
@@ -56,33 +63,33 @@ export default function Episode({ episode } : EpisodeProps) {
                 <span>{episode.durationAsString}</span>
             </header>
 
-            <div 
-                className={styles.description} 
-                dangerouslySetInnerHTML={{__html:episode.description}}    
+            <div
+                className={styles.description}
+                dangerouslySetInnerHTML={{ __html: episode.description }}
             />
         </div>
     )
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    
-    const {data} = await api.get('episodes',{
-        params:{
+
+    const { data } = await api.get('episodes', {
+        params: {
             _limit: 2,
-            _sort:'published_at',
+            _sort: 'published_at',
             _order: 'desc'
         }
     })
 
-    const paths = data.map(episode =>{
-        return{
+    const paths = data.map(episode => {
+        return {
             params: {
                 slug: episode.id
             }
         }
     })
-    
-    return{
+
+    return {
         paths,
         fallback: 'blocking',
 
