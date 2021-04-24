@@ -20,7 +20,11 @@
   - [Next Level Week](#id02)
   - [Instrutor](#id03)
 - [Podcastr](#id04)
-- [Meios de contato](#id10)
+  - [Tecnologias utilizadas](#id05)
+  - [Como usar o projeto](#id06)
+    - [Pré-requisitos](#id07)
+    - [Procedimentos de instalação](#id08)
+- [Meios de contato](#id09)
 
 # 🚀 RocketSeat <a name="id01"></a>
 RocketSeat é não só uma plataforma de educação em tecnologia, mais também uma comunidade de programadores.
@@ -36,23 +40,29 @@ Além disso, é uma semana de conteúdo intensivo focado em acelerar a evoluçã
 * Diego Schell Fernandes - [Linkedin](https://www.linkedin.com/in/diego-schell-fernandes/?originalSubdomain=br)
 
 
-# :memo: Podcastr <a name="id04"></a>
-O Projeto dessa 5ª edição é o Podcastr, que é uma site de um podcast, te possibilitando ouvir o podcast que o site possa representar. Trabalhando com diversas ferramentas do react, também usando técnicas para trabalhar com áudio e desenvolver um site performático.
+# :headphones: Podcastr <a name="id04"></a>
+O Projeto dessa 5ª edição é o Podcastr, que é uma site de um podcast, te possibilitando ouvir o podcasts da RocketSeat, o fala deve. Trabalhando com diversas ferramentas do reactJs e NextJs, também aplica técnicas para trabalhar com áudio criando um player completo imbutido no site, com funções de play, pause, próximo, anterior, repetir e modo aleatório. Além de tudo, usa as tecnologias para desenvolver um site performático.
 
-<!-- 
+
 ## 🛠 Tecnologias utilizadas <a name="id05"></a>
 
+- [x] TypeScript
+- [x] Estilização com SASS (Syntactically Awesome Style Sheets)
+- [x] ReactJs (componentes, propriedades e estados, refs)
+- [x] NextJs (SSG - static site generation, roteamento, context API)
+- [x] Gerenciador de pacotes Yarn (instalação de pacotes e geração de build do projeto)
+- [x] API fake com json server.
+- [x] Consumo de API com Axios
 
 # 💻 Como usar o projeto <a name="id06"></a>
 
-Este projeto 
+Este projeto é um site de podcasts que tem foco no acesso desktop. É aplicado com reactJS e nextJs, e para o servidor é usado uma fake API.
 
 ## ☑️ Pré-requisitos <a name="id07"></a>
 
 - [x] Editor de código de sua preferência (recomendado VS code)
 - [x] Git
-- [x] Node JS
-- [x] Expo
+- [x] Gerenciador de pacotes Yarn ou NPM
 
 ## 📝 Procedimentos de instalação <a name="id08"></a>
 
@@ -73,18 +83,43 @@ yarn install
 Para iniciar o projeto use na pasta o seguinte comando:
 
 ```bash
-#para iniciar o servidor ou a parte web use:
+#para iniciar use:
 npm start
 
 ou 
 
 yarn start
 
-# A parte web usa o endereço http://localhost:3000
+# Para acessar use o endereço http://localhost:3000
 
-```  -->
+#para iniciar o servidor use:
+npm server
 
-# :iphone: Meios de contato <a name="id10"></a>
+ou 
+
+yarn server
+
+# Para acessar use o endereço http://localhost:3333
+
+#para testar as funcionalidades em produção use:
+npm build
+
+ou 
+
+yarn build
+
+#pEm seguida inicie o projeto com:
+npm start
+
+ou 
+
+yarn start
+
+# Para acessar use o endereço http://localhost:3000
+
+``` 
+
+# :iphone: Meios de contato <a name="id09"></a>
 ## Jean Carlos De Meira :coffee:
 
 Perfil do linkedin - [Linkedin](https://www.linkedin.com/in/jean-carlos-de-meira-00593816a/)
